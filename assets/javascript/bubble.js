@@ -69,21 +69,52 @@ function bubbleChart() {
       nodes = createNodes(rawData);
   
       // create svg element inside provided selector
-      svg = d3.select('svg')
+      svg = d3.select('#vis').append('svg')
         .attr('width', width)
         .attr('height', height)
   
-      // bind nodes data to circle elements
-      const elements = svg.selectAll('.bubble')
-        .data(nodes, d => d.id)
-        .enter()
-        .append('g')
+     
+
+    // Lavel tooltip
+
+    const showTooltip = function(event, d) {
+    tooltip
+        .transition()
+        .duration(200)
+    tooltip
+        .style("opacity", 1)
+        .html("Median: " + d.median +"<br> Industry" + d.industry)
+        .style("left", (event.x)/2 + "px")
+        .style("top", (event.y)/2+30 + "px")
+    }
+    const moveTooltip = function(event, d) {
+    tooltip
+        .style("left", (event.x)/2 + "px")
+        .style("top", (event.y)/2+30 + "px")
+    }
+    const hideTooltip = function(event, d) {
+    tooltip
+        .transition()
+        .duration(200)
+        .style("opacity", 0)
+    }
+     // bind nodes data to circle elements
+     const elements = svg.selectAll('.bubble')
+     .data(nodes, d => d.id)
+     .enter()
+     .append('g')
+     .on("mouseover", showTooltip )
+    .on("mousemove", moveTooltip )
+    .on("mouseleave", hideTooltip )
+
   
       bubbles = elements
         .append('circle')
         .classed('bubble', true)
         .attr('r', d => d.radius)
         .attr('fill', d => fillColour(d.median_group))
+        
+        
   
       // labels
       labels = elements
@@ -92,10 +123,21 @@ function bubbleChart() {
         .style('text-anchor', 'middle')
         .style('font-size', 10)
         .text(function(d){
-            return(d.count > 500 ? d.industry : "")
+            return("")
            
         })
+        
   
+        const tooltip = d3.select("#vis")
+        .append("div")
+          .style("opacity", 0)
+          .attr("class", "tooltip")
+          .style("background-color", "black")
+          .style("border-radius", "5px")
+          .style("padding", "10px")
+          .style("color", "white")
+
+
       // set simulation's nodes to our newly created nodes array
       // simulation starts running automatically once nodes are set
       simulation.nodes(nodes)

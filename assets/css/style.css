@@ -1,0 +1,168 @@
+html{
+    min-height: 100%;
+}
+  body {
+    font-family: sans-serif;
+    font-size: 12px;
+    margin: 0;
+    min-height: 1000px;
+  }
+  
+  /* .checkbox {
+      position: absolute;
+    top: 15px;
+    left: 15px;
+  }
+  
+  .dropdown {
+      position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+  
+  text {
+    font-size: 12px;
+  }
+  
+  .title {
+    font-weight: bold;
+  }
+  
+  .grid-line {
+    stroke: black;
+    opacity: 0.2;
+  }
+  
+  .rect-label {
+    stroke: black;
+  }
+  
+  .selection-line {
+    stroke: black;
+    stroke-dasharray: 5,5;
+  }
+  
+  .hover-label {
+    background-color: blue;
+  }
+  
+  .lollipop-line {
+    stroke: black;
+    stroke-width: 1px;
+  }
+  
+  circle {
+    stroke-width: 1px;
+    stroke: black;
+  }
+  
+  circle.lollipop-start {
+    fill: #00c100;
+  }
+  
+  .lollipop-end {
+    fill: #d700d7;
+  }
+      
+  .lollipop-median {
+    fill: white;
+  }
+  
+  div.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 5px;
+    font: 12px sans-serif;		
+    background: white;	
+    border: 1px black solid;	
+    border-radius: 4px;
+    pointer-events: none;	
+  } */
+
+
+   /* GRAPHIC */
+
+   /* GRAPHIC CODE */
+.graphic {
+	width: 100%;
+	position: relative;
+}
+
+.graphic__prose {
+	width: 24rem;
+}
+
+.graphic__prose .trigger {
+	padding: 0;
+	margin: 0;
+	min-height: 240px;
+	
+}
+
+.graphic__vis {
+	position: absolute;
+	top: 0;
+	margin-left: 30rem;
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	height: 100vh;
+}
+
+.graphic__vis.is-fixed {
+	position: fixed;
+}
+
+.graphic__vis.is-bottom {
+	top: auto;
+	bottom: 0;
+}
+
+.graphic__vis svg {
+	border: 1px dashed black;
+	top: 50%;
+	position: relative;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	transform: translateY(-50%);
+
+}
+
+.item circle {
+	stroke: #666;
+	stroke-width: 1px;
+	fill: #fff;
+}
+
+.item text {
+	fill: #666;
+	font-size: 12px;
+	text-anchor: middle;
+	alignment-baseline: middle;
+}
+
+
+
+/* graph-scroll.js version */
+.graphic__vis.graph-scroll-fixed {
+	position: fixed;
+	right: auto;
+}
+
+.graphic__vis.graph-scroll-below {
+	top: auto;
+	bottom: 0;
+}
+
+
+.bubble {
+  stroke-width: 2px;
+  stroke: white;
+}
+.bubble:hover {
+  stroke: black;
+}
+
+.tooltip {
+  position: absolute;
+}
