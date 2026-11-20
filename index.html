@@ -1,35 +1,259 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <script src="assets/javascript/d3.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
-    <title></title>
-</head>
-<body>
-    <div class='intro'>
-        <p class='back-to-blog'><a href='../../#rollyourown'>&larr; Back to the blog</a></p>
-        <h1 class='hed'><a href='../../'>How to implement scrollytelling with six different libraries</a></h1>
-    </div>
 
-    <div class='library'>
-        <h2 class='library__hed'><a target='_blank' href='#'>Roll your own</a></h2>
-        <div class='library__graphic graphic'>
-            <div class='graphic__prose'>
-                <p class='trigger' data-step='0'>Step 1 in the graphic. It triggers in the middle of the viewport. For this graphic, it is the same as the initial state so the reader doesn&rsquo;t miss anything.</p>
-                <p class='trigger' data-step='1'>Step 2 arrives. The graphic should be locking into a fixed position right about now. We could have a whole bunch of these &ldquo;fixed&rdquo; steps.</p>
-                <p class='trigger' data-step='2'>Step 3 concludes our brief tour. The graphic should now go back to its original in-flow position, elegantly snapping back into place.</p>
-                <p class='trigger' data-step='3'>Step 3 concludes our brief tour. The graphic should now go back to its original in-flow position, elegantly snapping back into place.</p>
-                <p class='trigger' data-step='4'>Step 3 concludes our brief tour. The graphic should now go back to its original in-flow position, elegantly snapping back into place.</p>
-            </div>
-            <div class="graphic__vis"></div>
+<!--
+  Apply head only for dev environment, this is required for jekyll to
+  insert livereload scripts
+-->
+
+  <head>
+
+
+
+  <meta charset="utf-8">
+
+
+<title>Malaysia's Gender Gap Visualization - Naelah Nordin</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- Define a description for better SEO result -->
+<meta name="description" content="Visualization on Malaysia's gender gap for the year 2019 in relation to state, education, and occupation">
+
+<!-- Cheome Web App theme color -->
+<meta name="theme-color" content="#BA90C2">
+
+<!-- Feed URL -->
+<link rel="alternate" href="/feed.xml" type="application/atom+xml">
+
+<!-- Site icons -->
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="icon" href="/favicon.png" type="image/png"><link rel="icon" href="/favicon.svg?assets-inline-assets-keep" sizes="any" type="image/svg+xml"><link rel="mask-icon" href="/mask-icon.svg" color="#BA90C2">
+
+<!-- Chrome Web App manifest -->
+<link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+<!-- Canonical links, avoid duplicate content problems -->
+<link rel="canonical" href="http://0.0.0.0:4321/example-about/">
+
+<script src="assets/javascript/d3.min.js"></script>
+<!-- DNS prefetching for static files -->
+
+
+<!-- Head hooks -->
+
+
+
+  </head>
+
+<!-- Open Graph and Twitter Cards support -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Naelah Nordin">
+<meta property="og:title" content="The Malaysian Dream: Exploring the Gender Gap">
+<meta property="og:url" content="https://naelahnordin.com/gender-gap/">
+<meta property="og:description" content="Gender Gap Visualization">
+<meta property="og:image" content="https://raw.githubusercontent.com/naelah/naelah.github.io/master/gender-gap/assets/img/og-gender-pay-gap.jpeg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@naelnord">
+<meta name="twitter:creator" content="@naelnord">
+
+<!-- Main content wrap -->
+<main class="content " role=main>
+  <!-- Page-wide custom CSS -->
+
+
+<!-- Article wrapper, limit width -->
+<article lang="en">
+
+  <!-- Page title -->
+  <header>
+
+    <h1 class="" title="About" data-title="About">
+      The Malaysian Dream: <br>Exploring the Gender Gap<span class="dot dot--post"> </span>
+    </h1>
+
+    
+      <!-- <center><small>Exploring the Malaysian Gender Gap in Education & Workforce</small></center> -->
+    <center><small>by Naelah Nordin</small></center>
+    <!-- <center><small>by Naelah Nordin・available on Github</small></center> -->
+
+
+  </header>
+
+  <div class="page-content">  
+    <div class="no-viz">
+      <p>Recently, a prominent Malaysian public figure commented that women in pursuit of a relationship with a man should <a href="https://www.thestar.com.my/news/nation/2021/06/10/motivational-speaker-dr-muhaya-deletes-video-telling-women-to-039act-dumb039-to-land-a-man">"buat bodoh-bodoh"</a>, which roughly translates to acting dumb or being a damsel in distress. This comment sparked debate amongst Malaysians calling out on the misoginy and disrespectful views deep-rooted in traditional gender roles, and also highlights that this expectation on women's submission is not only strongly defended, but also came from a highly educated woman herself. This begs the question of wether traditional gender roles are still relevant and considered a norm and how it effects gender inequality in the workforce?</p>
+
+      <p>This visualization is based on DOSM's 2019 Salaries & Wages Survey data, created for the purpose of UiTM's Data Visualization Competition 2021.</p>
+
+      <h1>Mind the gap: How is the gender pay gap in each state?</h1>
+    </div>
+    <div id='container' class='container-1'>
+      <div id='graph'></div>
+      <div id='sections'>
+        <div style="padding-bottom: 70%;">
+          
+          <h3>Median salary by state</h3>
+          <p>The national median salary is RM2,207.25 which is close to the median salary of Melaka and Pahang. The top three states with the highest median salaries are WP Putrajaya, Kuala Lumpur and Selangor with RM4,000, RM3096, and RM2,875 respectively. Selangor and Kuala Lumpur being close to each other is not surprising as some people living in Selangor commute to Kuala Lumpur for work so the median salary of Selangor residents are most probably inclusive of salary gained working in Kuala lumpur.</p><p>The state with the lowest median salary on the other hand is Kelantan with RM1,650, and this is reflective of the lower cost of living in the east coast.
+          </p> 
+          <div id="gen_label"></div>
         </div>
-        <p class='back-to-blog'><a href='../../#rollyourown'>&larr; Back to the blog</a></p>
+
+        <div >
+        </div>
+
+
+        <div style="padding-bottom: 70%;">
+          <h3>Gender Gap by State</h3>
+          <p>
+          Now we look into the difference between median female salaries with median male salaries in each state to determine how much women are paid less or more compared to their male counterpart. The state with the biggest gender pay gap is WP Labuan with men earning RM703.50 more than women with the median female salary falling below the national median salary and the median male salary being above.</p>
+          <div id="fem_label"></div>
+
+        </div>
+
+        <div style="padding-bottom: 70%;">
+          <h3>Closing the gender gap</h3>
+          <p>
+            Meanwhile in Sarawak, Kelantan and Sabah, the women earn more than men. However, both genders' median salaries fall below the national median salary. Kuala Lumpur and Selangor display small gender pay gaps implying the opportunities for both men and women are almost equal in the state capital. 
+          </p>
+
+        </div>
+      </div>
+    </div>
+    <div class="no-viz">
+      <h1>
+        Does Education promise a better future?
+      </h1>
+    </div>
+    <div id='container' class='container-2'>
+      <div id='graph'></div>
+      <div id='sections'>
+        <div></div>
+        <div style="padding-bottom: 70%;padding-top: 20%">
+          <h3>Mapping Education and Salary</h3>
+          <p>
+          Here we map the different levels of education with the respective median salary groups for different genders. At first glance we don't see a stark difference between the genders in terms of education. In general, there are more working men than there are working women but the difference is not drastic. The majority of both men and women receive tertiary education which encompasses diploma and higher which implies that the educational opportities are similar for both genders. However, when it comes to earning more, men take up 65% of the <b>5000 and more</b>median salary group regardless of education. Let's look closer for each education level.
+        </p>
+        </div>
+
+        <div style="padding-bottom: 70%;">
+          <h3>No Formal Education</h3>
+          <p>
+            Having no formal education means the person was not able to attend school. Jobs that do not require any form of education typically are hard labor and fall under the <b>0 - 2500</b> median salary group. However there are a few people who made it to the <b>5000 and more</b> group despite not having any formal education, specifically 3 men and one woman. As for the <b>2500 - 5000</b> group, only 8 men from the no formal education section were identified to be in it.
+          </p>
+
+        </div>
+
+        <div style="padding-bottom: 70%;">
+          <h3>Primary Education</h3>
+
+          <p>
+            Primary education means the person was able to finish primary school but did not pursue secondary school. Women in this category mostly fall under the <b>0 - 2500</b> group, while men has more diversity in their median salaries. This category also has a few people in the <b>5000 and more</b> group with majority being men. 
+          </p>
+
+        </div>
+
+
+        <div style="padding-bottom: 70%;">
+          <h3>Secondary Education</h3>
+
+          <p>
+            Secondary education means the person was able to finish up to highschool and immediately worked instead of pursuing tertiary education. The pattern is similar with primary education but with a higher volume as the number of people with secondary education is almost triple of those with primary education.
+          </p>
+        </div>
+        <div style="padding-bottom: 70%;">
+          <h3>Tertiary</h3>
+
+          <p>
+            Tertiary education takes up the majority of educational attainment. The number is almost equal for each salary group even though tertiary education is the highest attainable education in comparison to the others. This implies that having tertiary education is no longer a promise for a better future, but it does increases you chances for employment as the competition increases.
+          </p>
+          <p>
+            As for equality in opportunities, while women are similarly educated with men, men are the majority in the higher earning groups. The number of men in the <b>5000 and more</b> group is 65%, in the <b>2500 - 5000</b> group is 55%, and in the <b>0 - 2500</b> group is 49% respectively. 
+          </p>
+
+
+        </div>
+      </div>
+    </div>
+    <h1>
+      Which profession pays equally?
+    </h1>
+    
+    <div id='container' class='container-3'>
+      <div id='graph'></div>
+        
+      <div id='sections'>
+        <div>
+        </div>
+        <div style="padding-bottom: 70%;">
+          <h3>Bubble chart of profession</h3>
+          <p>
+            Here we plot a bubble chart with each bubble representing a profession. The size of the bubble is based on the number of people in that profession, and the colors are based on their median salary group. Hovering over each bubble will reveal more detailed information.
+          </p>
+
+          
+          <div id="bubble_legend"></div>
+        
+
+        </div>  
+        <div style="padding-bottom: 70%;">
+          <h3>Median Salary of profession</h3>
+          <p>
+            The median salaries of each profession is categorized into three categories. In the low median group, professions with high number of workers are <b>Office Clerks</b>, <b>Serive Workers</b> and <b>Sales Workers</b>. The middle median group has more professional jobs such as <b>Science and Engineering Associate Professionals</b>, and for the high median group, notable profession is <b>Teaching Professionals</b>
+          </p>
+           
+          <div id="bubble_label"></div>
+        </div>  
+        <div style="padding-bottom: 70%;">
+          <h3>Gender pay gap of profession</h3>
+
+          <p>
+            We group these professions based on their gender pay gap percentage. The profession where females earn the most is <b>Information and Communication technicians</b> while the profession where females earn the least is <b>Street and Related Sales and Service Workers</b>. Other notable professions with big gender pay gaps are <b>Office Clerks</b> and <b>Science and Engineering Associate Professionals</b>. You can choose a profession in the dropdown below to see where they are in the plot. 
+          </p>
+          <select class="occupation-dropdown"></select>
+        </div>  
+        <div style="padding-bottom: 70%;">
+          <p>
+            While medium & higher paying professions are distributed evenly amongst different gender pay groups, the lower median salary group are heavily gravitating towards the <b>more than 10%</b> gender pay gap group.
+          </p>
+        </div>  
+
+      </div>
+
+    </div>
+    <div class='no-viz'>
+      <p>In conclusion, the gender pay gap in each state are different and is particularly small in the state capital Kuala Lumpur and neighboring state Selangor. This implies that working opportunities are almost similar regardless of gender. </p>
+      <p>In terms of educational attainment, both men and women are similarly educated with the majority of both genders having tertiary education. This shows that educational opportunities are similar for both genders and also emphasizes the rising competition in the workforce as more people are achieving tertiary level education. However, even though women are similarly educated, there are more men than women in the workforce and the higher paying jobs are dominated by men.</p>
+      <p>
+        
+      </p>
     </div>
 
-</body>
-<!-- <script src="assets/javascript/paygap.js"></script> -->
-<!-- <script src="assets/javascript/dot-plot.js"></script> -->
+
+  </div>
+</article>
+</main>
+
+
+<!-- Footer section -->
+
+  <footer class="footer">
+    <ul>
+      <li><p>© Naelah Nordin 2021, All rights reserved.</p></li>   
+    </ul>
+  </footer>
+
+
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script src="assets/javascript/graphic.js"></script>
-<script src="assets/javascript/scrollytelling.js"></script>
+<script src="https://unpkg.com/d3-sankey@0.12"></script>
+<script src='assets/javascript/graph-scroll.js'></script>	
+<script src='assets/javascript/graph-scroller.js'></script>	
+<!-- <script src="assets/javascript/scrollytelling.js"></script> -->
+
+
+<!-- Finale -->
 </html>

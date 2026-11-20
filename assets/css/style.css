@@ -1,168 +1,230 @@
-html{
-    min-height: 100%;
-}
-  body {
-    font-family: sans-serif;
-    font-size: 12px;
-    margin: 0;
-    min-height: 1000px;
-  }
-  
-  /* .checkbox {
-      position: absolute;
-    top: 15px;
-    left: 15px;
-  }
-  
-  .dropdown {
-      position: absolute;
-    top: 15px;
-    right: 15px;
-  }
-  
-  text {
-    font-size: 12px;
-  }
-  
-  .title {
-    font-weight: bold;
-  }
-  
-  .grid-line {
-    stroke: black;
-    opacity: 0.2;
-  }
-  
-  .rect-label {
-    stroke: black;
-  }
-  
-  .selection-line {
-    stroke: black;
-    stroke-dasharray: 5,5;
-  }
-  
-  .hover-label {
-    background-color: blue;
-  }
-  
-  .lollipop-line {
-    stroke: black;
-    stroke-width: 1px;
-  }
-  
-  circle {
-    stroke-width: 1px;
-    stroke: black;
-  }
-  
-  circle.lollipop-start {
-    fill: #00c100;
-  }
-  
-  .lollipop-end {
-    fill: #d700d7;
-  }
-      
-  .lollipop-median {
-    fill: white;
-  }
-  
-  div.tooltip {
-    position: absolute;
-    text-align: center;
-    padding: 5px;
-    font: 12px sans-serif;		
-    background: white;	
-    border: 1px black solid;	
-    border-radius: 4px;
-    pointer-events: none;	
-  } */
-
-
-   /* GRAPHIC */
-
-   /* GRAPHIC CODE */
-.graphic {
-	width: 100%;
-	position: relative;
+:root {
+  --text: hsl(318, 30%, 12%);
+  --link: #ba90c2;
+  --bg: #fff;
+  --prose: 36rem;
+  --chart-gap: 2rem;
 }
 
-.graphic__prose {
-	width: 24rem;
+html {
+  background: var(--bg);
 }
 
-.graphic__prose .trigger {
-	padding: 0;
-	margin: 0;
-	min-height: 240px;
-	
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--text);
+  background: var(--bg);
+  font-family: "Helvetica Neue", "Segoe UI", sans-serif;
+  font-size: 18px;
+  line-height: 1.45;
 }
 
-.graphic__vis {
-	position: absolute;
-	top: 0;
-	margin-left: 30rem;
-	-webkit-transform: translate3d(0, 0, 0);
-	-moz-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
-	height: 100vh;
+a {
+  color: var(--text);
+  font-weight: 700;
 }
 
-.graphic__vis.is-fixed {
-	position: fixed;
+.no-viz a {
+  color: var(--link);
+  text-decoration: underline;
 }
 
-.graphic__vis.is-bottom {
-	top: auto;
-	bottom: 0;
+.content header {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem 2.5rem;
+  text-align: center;
 }
 
-.graphic__vis svg {
-	border: 1px dashed black;
-	top: 50%;
-	position: relative;
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	transform: translateY(-50%);
-
+.content header h1 {
+  margin: 0;
+  font-weight: 700;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  font-family: Georgia, "Times New Roman", serif;
 }
 
-.item circle {
-	stroke: #666;
-	stroke-width: 1px;
-	fill: #fff;
+.content header small {
+  display: block;
+  margin-top: 1.2rem;
 }
 
-.item text {
-	fill: #666;
-	font-size: 12px;
-	text-anchor: middle;
-	alignment-baseline: middle;
+.dot--post {
+  display: inline-block;
+  width: 0.28em;
+  height: 0.28em;
+  margin-left: 0.12em;
+  border-radius: 50%;
+  background: var(--link);
+  vertical-align: 0.12em;
 }
 
-
-
-/* graph-scroll.js version */
-.graphic__vis.graph-scroll-fixed {
-	position: fixed;
-	right: auto;
+.page-content {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.25rem 3rem;
 }
 
-.graphic__vis.graph-scroll-below {
-	top: auto;
-	bottom: 0;
+.no-viz {
+  max-width: var(--prose);
+  margin: 0 auto 2rem;
+  padding: 0 1.75rem;
 }
 
+.no-viz h1,
+.page-content > h1 {
+  margin: 3rem 0 1.25rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.no-viz p,
+#sections p {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+}
+
+#sections h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.25rem;
+  font-weight: 650;
+}
+
+.container-1,
+.container-2,
+.container-3 {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(16rem, 22rem) minmax(0, 1fr);
+  column-gap: var(--chart-gap);
+  align-items: start;
+  margin: 0 auto 4rem;
+}
+
+.container-1 #sections,
+.container-2 #sections,
+.container-3 #sections {
+  grid-column: 1;
+  grid-row: 1;
+  width: auto;
+}
+
+#sections > div {
+  background: white;
+  opacity: 0.25;
+  margin-bottom: 55vh;
+  padding: 1.75rem 1.5rem 2rem;
+  box-sizing: border-box;
+}
+
+#sections > div:last-child {
+  margin-bottom: 20vh;
+}
+
+#sections > div.graph-scroll-active {
+  opacity: 1;
+}
+
+.container-1 #graph,
+.container-2 #graph,
+.container-3 #graph {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1rem;
+  width: 100%;
+  height: min(62vh, 560px);
+  float: none;
+  margin: 0;
+  z-index: 1;
+  background: #fff;
+}
+
+#graph svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+}
+
+.svg_legend {
+  background-color: white;
+}
+
+circle {
+  fill: steelblue;
+}
 
 .bubble {
   stroke-width: 2px;
   stroke: white;
 }
+
 .bubble:hover {
   stroke: black;
 }
 
 .tooltip {
   position: absolute;
+  padding: 5px;
+  font: 12px sans-serif;
+}
+
+.occupation-dropdown {
+  font: 15px sans-serif;
+  width: 100%;
+  max-width: 20rem;
+}
+
+.footer {
+  padding: 1rem 1.25rem 2.5rem;
+}
+
+.footer ul {
+  max-width: var(--prose);
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 800px) {
+  .container-1,
+  .container-2,
+  .container-3 {
+    display: block;
+  }
+
+  .container-1 #graph,
+  .container-2 #graph,
+  .container-3 #graph {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 46vh;
+    margin-bottom: 1rem;
+  }
+
+  #sections > div {
+    padding: 1.5rem 1.25rem 1.75rem;
+    margin-bottom: 50vh;
+  }
+
+  .no-viz h1,
+  .page-content > h1 {
+    margin: 1.5rem 0 1rem;
+  }
 }
