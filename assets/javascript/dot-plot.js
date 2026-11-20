@@ -1,5 +1,6 @@
 d3.json('/data/state_full.json').then(function(data){ 
     
+console.log(data)
 
 var extent_state = d3.extent(data, d => d.state_name);
 var extent_salary_pay = d3.extent(data, d=> d.median_salary_full)
